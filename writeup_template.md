@@ -22,10 +22,11 @@ The goals / steps of this project are the following:
 [image1]: ./examples/undistort_output.png "Undistorted"
 [image2]: ./test_images/test4.jpg "Road Transformed"
 [image3]: ./output_images/undistortedResult.png "Binary Example"
-[image4]: ./examples/binary_combo_example.jpg "Binary Example"
-[image5]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image6]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image7]: ./examples/example_output.jpg "Output"
+[image4]: ./output_images/PerspectiveResult.png "Binary Example"
+[image5]: ./examples/binary_combo_example.jpg "Binary Example"
+[image6]: ./examples/warped_straight_lines.jpg "Warp Example"
+[image7]: ./examples/color_fit_lines.jpg "Fit Visual"
+[image8]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
@@ -62,10 +63,13 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 Here we have to get the original image first and then use the `objpoints` and `imgpoints` like what I did in the previous step then I get the comparison figure which including the original and undistorted images:
 ![alt text][image3]
 
+Now it is time to use `cv2.getPerspectiveTransform` to get the perspective transform from our original image, and we will get:
+![alt text][image4]
+
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
 I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
-![alt text][image4]
+![alt text][image5]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
@@ -95,13 +99,13 @@ This resulted in the following source and destination points:
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-![alt text][image5]
+![alt text][image6]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
 Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
 
-![alt text][image6]
+![alt text][image7]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
@@ -111,7 +115,7 @@ I did this in lines # through # in my code in `my_other_file.py`
 
 I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
 
-![alt text][image7]
+![alt text][image8]
 
 ---
 
