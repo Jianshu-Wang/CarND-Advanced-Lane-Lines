@@ -21,12 +21,13 @@ The goals / steps of this project are the following:
 
 [image1]: ./examples/undistort_output.png "Undistorted"
 [image2]: ./test_images/test4.jpg "Road Transformed"
-[image3]: ./output_images/undistortedResult.png "Binary Example"
-[image4]: ./output_images/PerspectiveResult.png "Binary Example"
-[image5]: ./examples/binary_combo_example.jpg "Binary Example"
-[image6]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image7]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image8]: ./examples/example_output.jpg "Output"
+[image3]: ./output_images/undistort_output "Binary Example"
+[image4]: ./output_images/gradient_binary_result.png "Binary Example"
+[image5]: ./output_images/perspective_result "Binary Example"
+[image6]: ./examples/binary_combo_example.jpg "Binary Example"
+[image7]: ./examples/warped_straight_lines.jpg "Warp Example"
+[image8]: ./examples/color_fit_lines.jpg "Fit Visual"
+[image9]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
@@ -63,15 +64,15 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 Here we have to get the original image first and then use the `objpoints` and `imgpoints` like what I did in the previous step then I get the comparison figure which including the original and undistorted images:
 ![alt text][image3]
 
-Now it is time to use `cv2.getPerspectiveTransform` to get the perspective transform from our original image, and we will get:
-![alt text][image4]
-
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
-![alt text][image5]
+I used HLS color space and get the s image, convert it to binary image, set the grid whose value in a range of (190,255) as 1, in addition, I used `cv2.Sobel` to get the gradient of the image on both x axis and y axis. Then conbine them. Here is my output:
+![alt text][image4]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
+
+Now it is time to use `cv2.getPerspectiveTransform` to get the perspective transform from our original image, and we will get:
+![alt text][image5]
 
 The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
 
