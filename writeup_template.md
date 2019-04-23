@@ -25,8 +25,8 @@ The goals / steps of this project are the following:
 [image4]: ./output_images/gradient_binary_result.png "Binary Example"
 [image5]: ./output_images/perspective_result.png "Binary Example"
 [image6]: ./output_images/perspective_result2.png "Binary Example"
+[image7]: ./output_images/output_images/Lane_Pixel_Result.png "Binary Example"
 
-[image7]: ./examples/binary_combo_example.jpg "Binary Example"
 [image8]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image9]: ./examples/color_fit_lines.jpg "Fit Visual"
 [image10]: ./examples/example_output.jpg "Output"
@@ -105,7 +105,7 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+Then I find the 2 sides of the lane by finding peaks of histogram, and find the lane line pixels, and fit those pixel position by using `cv2.fillpoly()`, I got what I need.
 
 ![alt text][image7]
 
