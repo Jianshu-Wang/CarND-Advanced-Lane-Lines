@@ -26,10 +26,10 @@ The goals / steps of this project are the following:
 [image5]: ./output_images/perspective_result.png "Binary Example"
 [image6]: ./output_images/perspective_result2.png "Binary Example"
 [image7]: ./output_images/Lane_Pixel_Result.png "Binary Example"
-
-[image8]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image9]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image10]: ./examples/example_output.jpg "Output"
+[image8]: ./output_images/Example_Result.png "Binary Example"
+[image9]: ./examples/warped_straight_lines.jpg "Warp Example"
+[image10]: ./examples/color_fit_lines.jpg "Fit Visual"
+[image11]: ./examples/example_output.jpg "Output"
 [video1]: ./output_images/project_video_output.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
@@ -67,7 +67,7 @@ Here we have to get the original image first and then use the `objpoints` and `i
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used HLS color space and get the S image, and get the B image from LAB colorspace, and get the L image from the LUV image. Adjust their range, the reason why I use these is because I can get yellow lines by using S image and B image, and it is very easy to find white lines by using L image. I set `Sthresh=(140, 255)`, `Lthresh = (220,255)`, `Bthresh = (150,200)`. The combine logic is `(S&B)|L`, by using this combination it can filter the effect of the tree shade and some unusual road colors. Here is the combined output:
+I used HLS color space and get the S image, and get the B image from LAB colorspace, and get the L image from the LUV image. Adjust their range, the reason why I use these is because I can get yellow lines by using S image and B image, and it is very easy to find white lines by using L image. I set `Sthresh=(90, 150)`, `Lthresh = (220,255)`, `Bthresh = (135,200)`. The combine logic is `(S&B)|L`, by using this combination it can filter the effect of the tree shade and some unusual road colors. Here is the combined output:
 ![alt text][image4]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
@@ -100,18 +100,17 @@ This resulted in the following source and destination points:
 | 730, 460      | 1150, 0        |
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
-
 ![alt text][image6]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
 Then I find the 2 sides of the lane by finding peaks of histogram, and find the lane line pixels, and fit those pixel position by using `cv2.fillpoly()`, I got what I need.
-
 ![alt text][image7]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
+I did this in lines by using `fit_polynomial_curve`, you check it in my `report.ipynb`.
+I get `1488.6332453796426 m 2879.66577725656 m`
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
