@@ -25,7 +25,7 @@ The goals / steps of this project are the following:
 [image4]: ./output_images/gradient_binary_result.png "Binary Example"
 [image5]: ./output_images/perspective_result.png "Binary Example"
 [image6]: ./output_images/perspective_result2.png "Binary Example"
-[image7]: ./output_images/output_images/Lane_Pixel_Result.png "Binary Example"
+[image7]: ./output_images/Lane_Pixel_Result.png "Binary Example"
 
 [image8]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image9]: ./examples/color_fit_lines.jpg "Fit Visual"
