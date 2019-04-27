@@ -1,6 +1,3 @@
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
 
 ---
 
@@ -104,18 +101,17 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I find the 2 sides of the lane by finding peaks of histogram, and find the lane line pixels, and fit those pixel position by using `cv2.fillpoly()`, I got what I need.
+Then I find the 2 sides of the lane by finding peaks of histogram, and find the lane line pixels, and fit those pixel position by using `cv2.fillpoly()`, fill them with green color and I got what I need.
 ![alt text][image7]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines by using `fit_polynomial_curve`, you check it in my `report.ipynb`.
-I get `1488.6332453796426 m 2879.66577725656 m`
+I did this in lines by using `fit_polynomial_curve`, the same method, I got the radius of both sides and then get a mean value of them, you can check it in my `report.ipynb`.
+I get `1488.6332453796426 m 2879.66577725656 m` for left and right side respectively.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
-
+I implemented this step in my code in `report.ipynb` in the part 6. Use the inverse matrix to get the perspective view and add it back on the original undistorted image, use`cv2.addWeighted(undistorted, 1, wrap_img, 1, 0)`, Here is an example of my result on a test image:
 ![alt text][image8]
 
 ---
@@ -132,4 +128,6 @@ Here's a [link to my video result](./output_images/project_video_output.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+As you can see in the output video, the method described above works very well on the project video, by it can not handle the challenge videos, I have tried many possible threshold value ranges, but I still can not find a good thresholds' combination to make it works on both. I think we can try to the previous image frame to predict the area of the next frame and then to detect the target line in the next image frame, this would be a good way to avoid large errors. I will try after I finish all the projects.
+
+
